@@ -95,7 +95,7 @@ else:
 
     def generate_response(user_input):
         st.session_state['conversation_history'].append({"role": "user", "content": user_input})
-        response = openai.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=st.session_state['conversation_history']
         )
@@ -105,7 +105,7 @@ else:
 
     def generate_affirmation():
         prompt = "Provide a short positive affirmation for someone feeling overwhelmed."
-        response = openai.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
         )
@@ -113,7 +113,7 @@ else:
 
     def generate_meditation_guide():
         prompt = "Provide a 5-minute guided meditation to reduce stress."
-        response = openai.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
         )
