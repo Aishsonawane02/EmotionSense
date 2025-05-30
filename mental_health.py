@@ -42,11 +42,11 @@ def get_base64(background):
     with open(background, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-bg_str = get_base64("background1.webp")
+bg_str = get_base64("background1.png")
 st.markdown(f"""
     <style>
     .stApp {{
-        background-image: url("data:image/webp;base64,{bg_str}");
+        background-image: url("data:background1.png;base64,{bg_str}");
         background-size: cover;
         background-attachment: fixed;
     }}
