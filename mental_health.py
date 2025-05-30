@@ -44,12 +44,12 @@ def get_base64(background):
         data = f.read()
     return base64.b64encode(data).decode()
 
-bin_str = get_base64("background1.webp")
+bin_str = get_base64("background1.png")
 
 st.markdown(f"""
     <style>
     .stApp {{
-        background-image: url("data:background1.webp;base64,{bin_str}");
+        background-image: url("data:background1.png;base64,{bin_str}");
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
