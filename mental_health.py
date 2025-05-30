@@ -10,34 +10,6 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])  # ✅ Correct way to init
 
 st.set_page_config(page_title="EmotionSense - AI Driven Virtual Therapist")
 
-init_db()
-
-if 'authenticated' not in st.session_state:
-    st.session_state['authenticated'] = False
-
-if not st.session_state['authenticated']:
-    st.title("Login to EmotionSense")
-    choice = st.selectbox("Login or Register", ["Login", "Register"])
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-
-    if choice == "Login":
-        if st.button("Login"):
-            if login_user(username, password):
-                st.session_state['authenticated'] = True
-                st.session_state['username'] = username
-                st.success(f"Welcome {username}")
-            else:
-                st.error("Incorrect username or password.")
-    else:
-        if st.button("Register"):
-            if register_user(username, password):
-                st.success("Registration successful. Please log in.")
-            else:
-                st.error("Username already exists.")
-else:
-    st.success(f"Logged in as {st.session_state['username']}")
-
     def get_base64(background):
         with open(background, "rb") as f:
             data = f.read()
@@ -67,6 +39,33 @@ else:
         }}
         </style>
     """, unsafe_allow_html=True)
+init_db()
+
+if 'authenticated' not in st.session_state:
+    st.session_state['authenticated'] = False
+
+if not st.session_state['authenticated']:
+    st.title("Login to EmotionSense")
+    choice = st.selectbox("Login or Register", ["Login", "Register"])
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if choice == "Login":
+        if st.button("Login"):
+            if login_user(username, password):
+                st.session_state['authenticated'] = True
+                st.session_state['username'] = username
+                st.success(f"Welcome {username}")
+            else:
+                st.error("Incorrect username or password.")
+    else:
+        if st.button("Register"):
+            if register_user(username, password):
+                st.success("Registration successful. Please log in.")
+            else:
+                st.error("Username already exists.")
+else:
+    st.success(f"Logged in as {st.session_state['username']}")
 
     st.session_state.setdefault('conversation_history', [])
     st.session_state.setdefault('mood_ratings', [])
