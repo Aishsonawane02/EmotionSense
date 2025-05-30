@@ -1,10 +1,10 @@
 import streamlit as st
-import openai
+import openai from OpenAI
 import base64
 from datetime import datetime
 from auth import init_db, login_user, register_user
 
-# Set your OpenAI API key (from Streamlit secrets)
+# Initialize client using project-scoped key from secrets
 client.api_key = st.secrets["OPENAI_API_KEY"]
 st.set_page_config(page_title="EmotionSense - AI Driven Virtual Therapist")
 
