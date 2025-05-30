@@ -5,7 +5,7 @@ from datetime import datetime
 from auth import init_db, login_user, register_user
 
 # Set your OpenAI API key (from Streamlit secrets)
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+client.api_key = st.secrets["OPENAI_API_KEY"]
 st.set_page_config(page_title="EmotionSense - AI Driven Virtual Therapist")
 
 init_db()
